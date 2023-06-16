@@ -2,13 +2,14 @@
    Print a random GPS coördinate and a handy lookup url
 
    MIT (c) 2023 René Oudeweg
+  
+   gcc gpsrand.c -Wall -g -Og -o gpselders
 
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-/*#include <curl/curl.h>*/
 
 typedef struct {
     int degrees;
@@ -29,8 +30,7 @@ void printurl(double latitude, double longitude)
   snprintf(url, sizeof(url), "https://www.openstreetmap.org/?mlat=%f&mlon=%f#map=15/%f/%f", latitude, longitude, latitude, longitude);
   printf("curl: %s\n", url);
   snprintf(url, sizeof(url), "https://www.google.com/maps/place/%f,%f", latitude, longitude);
-  printf("curl: %s\n", url);
- 
+  printf("curl: %s\n", url); 
 }
 
 double getRandomCoordinate() {
